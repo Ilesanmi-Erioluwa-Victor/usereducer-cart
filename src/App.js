@@ -1,23 +1,28 @@
+import React from "react";
+import { useGlobalContext } from "./context";
 
+// components
+import Navbar from "./Navbar";
+import CartContainer from "./CartContainer";
+// items
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
+  const {
+    state: { loading },
+  } = useGlobalContext();
 
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+  if (loading) {
+    return (
+      <div className="loading">
+        <h1>Loading...</h1>
+      </div>
+    );
+  }
+  return (
+    <main>
+      <Navbar />
+      <CartContainer />
+    </main>
   );
 }
 
